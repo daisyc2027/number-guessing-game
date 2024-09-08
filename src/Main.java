@@ -4,17 +4,20 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        int randomNumber = (int) (Math.random() * 101);
-        System.out.println("you have 5 tries to guess the number i'm thinking of (between 1 and 100)");
+        int maxRange = 500;
+        int minRange = 100;
+        int randomNumber = (int) (Math.random() * ((maxRange+1) - minRange) + minRange);
+        System.out.println("you have 5 tries to guess the number i'm thinking of between " + minRange + " and " + maxRange);
         System.out.println("For reference purposes, the number is: " + randomNumber);
 
+
         int userGuess;
-        System.out.println("guess a number between 1 and 100");
+        System.out.println("guess a number between " + minRange + " and " + maxRange);
         userGuess = sc.nextInt();
         int numberGuesses = 4;
 
         for(int i = numberGuesses; i > 0; i--) {
-            if (userGuess > 100 || userGuess < 1) {
+            if (userGuess > maxRange || userGuess < minRange) {
                 System.out.println("pls read the question again, " + i + " tries left");
                 userGuess = sc.nextInt();
             }
